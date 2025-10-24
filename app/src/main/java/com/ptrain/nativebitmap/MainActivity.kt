@@ -2,11 +2,15 @@ package com.ptrain.nativebitmap
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.mico.libx.hook.BuildConfig
+import com.mico.libx.hook.nativebitmap.NativeBitmap
+import com.mico.libx.hook.thread.ThreadHook
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        NativeBitmap.init(true)
+        val ct = System.currentTimeMillis()
+        NativeBitmap.init(BuildConfig.DEBUG)
+        ThreadHook.init(BuildConfig.DEBUG, 128 * 1024)
+        Log.d("TAG", "nativehook cost=${System.currentTimeMillis() - ct}")
         val imageContainer = findViewById<ViewGroup>(R.id.image_container)
 
         val img = ImageView(this)

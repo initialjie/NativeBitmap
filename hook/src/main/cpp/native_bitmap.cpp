@@ -6,6 +6,7 @@
 #include "logger.h"
 #include "shadowhook.h"
 #include "bitmap_hook.h"
+#include "thread_hook.h"
 
 /**
  * inline hook
@@ -63,7 +64,7 @@ static void* hookNewNonMovableArray() {
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_ptrain_nativebitmap_NativeBitmap_nInit(JNIEnv *env, jobject thiz, jboolean debug) {
+Java_com_mico_libx_hook_nativebitmap_NativeBitmap_nInit(JNIEnv *env, jobject thiz, jboolean debug) {
     // hook
     if (BitmapHook::init(env)) {
         void* deleteStub = hookDeleteWeakGlobalRef();
@@ -101,3 +102,4 @@ Java_com_ptrain_nativebitmap_NativeBitmap_nInit(JNIEnv *env, jobject thiz, jbool
         }
     }
 }
+

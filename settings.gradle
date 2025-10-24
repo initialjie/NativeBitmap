@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "nativebitmap"
 include ':app'
-include ':nativebitmap'
+include ':hook'

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.ptrain.nativebitmap'
+    namespace 'com.mico.libx.hook'
     compileSdk 35
     ndkVersion "28.1.13356709"
     defaultConfig {
@@ -35,6 +35,7 @@ android {
 
     packagingOptions {
         doNotStrip '**/libnativebitmap.so'
+        doNotStrip '**/libthreadhook.so'
         exclude '**/libshadowhook.so'
     }
 
